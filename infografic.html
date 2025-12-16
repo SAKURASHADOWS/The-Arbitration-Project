@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proiectul Arbitraj: Harta Independenței Financiare 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Palette: Vibrant Future (Indigo/Cyan/Amber) */
+        :root {
+            --color-primary: #4F46E5; /* Indigo 600 */
+            --color-secondary: #06B6D4; /* Cyan 500 */
+            --color-accent: #F59E0B; /* Amber 500 */
+            --color-dark: #1F2937; /* Gray 800 */
+            --color-light: #F3F4F6; /* Gray 100 */
+        }
+
+        body {
+            background-color: var(--color-light);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--color-dark);
+        }
+
+        /* Chart Container Styling - Strict Adherence to Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constrain width on large screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Base height */
+            max-height: 400px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Custom Flowchart Elements (No SVG) */
+        .flow-step {
+            position: relative;
+        }
+        .flow-arrow::after {
+            content: '⬇'; /* Unicode Arrow */
+            font-size: 2rem;
+            color: var(--color-secondary);
+            display: block;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        @media (min-width: 768px) {
+            .flow-arrow::after {
+                content: '➡';
+                display: inline-block;
+                position: absolute;
+                right: -1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            /* Remove arrow for last child */
+            .flow-step:last-child .flow-arrow::after {
+                content: '';
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-indigo-900 text-white py-12 px-4 shadow-xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-400 via-indigo-900 to-black"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                PROIECTUL <span class="text-cyan-400">ARBITRAJ</span> 2025
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+                Harta vizuală a metodelor validate de a genera venituri internaționale din confortul casei tale.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <span class="bg-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">🚀 Digital Economy</span>
+                <span class="bg-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">💻 Remote Work</span>
+                <span class="bg-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">🌍 Global Income</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-24">
+
+        <!-- SECTION 1: OLD vs NEW -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-indigo-900 mb-4">Schimbarea de Paradigmă</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Trăim o tranziție istorică. Modelul tradițional "cărămidă și mortar" devine riscant și costisitor.
+                    În contrast, <strong>Arbitrajul Digital</strong> îți permite să operezi cu costuri minime, accesând piețe globale.
+                    Graficul de mai jos compară eficiența celor două modele.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- Chart Col -->
+                <div class="w-full">
+                    <div class="chart-container">
+                        <canvas id="chartComparison"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 text-center mt-2 italic">Scoruri relative (1-10) bazate pe analiză de piață.</p>
+                </div>
+                
+                <!-- Text Col -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-indigo-500">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">De ce Digital Arbitrage?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">📉</span>
+                            <div>
+                                <strong class="text-indigo-700">Costuri de Start Zero:</strong>
+                                <p class="text-gray-600">Spre deosebire de un magazin fizic (chirie, stoc), majoritatea metodelor digitale necesită doar un laptop.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🌍</span>
+                            <div>
+                                <strong class="text-indigo-700">Audiență Globală:</strong>
+                                <p class="text-gray-600">Nu ești limitat la clienții din orașul tău. Vinzi în SUA, Japonia sau UK.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🚀</span>
+                            <div>
+                                <strong class="text-indigo-700">Scalabilitate Rapidă:</strong>
+                                <p class="text-gray-600">Poți servi 100 de clienți la fel de ușor ca pe 10, folosind automatizări.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TOP 5 METHODS ANALYSIS -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 md:p-12 overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-100 rounded-full opacity-50 -mr-20 -mt-20"></div>
+            
+            <div class="text-center mb-12 relative z-10">
+                <h2 class="text-3xl font-bold text-indigo-900 mb-4">Top 5 Metode Analizate</h2>
+                <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                    Nu toate oportunitățile sunt egale. Am analizat cele 5 metode discutate în "Proiectul Arbitraj" pe baza a patru factori critici:
+                    <strong>Potențial de Venit</strong>, <strong>Competențe Tehnice Necesare</strong>, <strong>Natura Pasivă</strong> și <strong>Viteza de Start</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Content Cards -->
+                <div class="space-y-6">
+                    <!-- AAA Card -->
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg hover:shadow-md transition">
+                        <h4 class="font-bold text-indigo-600 text-lg">1. AI Automation Agency (AAA)</h4>
+                        <p class="text-sm text-gray-600">Implementare chatboți și automatizări pentru firme. Venit mare, necesită skill tehnic mediu.</p>
+                    </div>
+                    <!-- Closing Card -->
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg hover:shadow-md transition">
+                        <h4 class="font-bold text-indigo-600 text-lg">2. High-Ticket Closing</h4>
+                        <p class="text-sm text-gray-600">Vânzări prin telefon. Comisioane mari imediate, dar nu este venit pasiv (timp contra bani).</p>
+                    </div>
+                    <!-- Faceless Card -->
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg hover:shadow-md transition">
+                        <h4 class="font-bold text-indigo-600 text-lg">3. Faceless Content</h4>
+                        <p class="text-sm text-gray-600">Canale YouTube automatizate. Venit extrem de pasiv pe termen lung, dar start lent.</p>
+                    </div>
+                     <!-- Digital Prod Card -->
+                     <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg hover:shadow-md transition">
+                        <h4 class="font-bold text-indigo-600 text-lg">4. Produse Digitale (Etsy)</h4>
+                        <p class="text-sm text-gray-600">Vânzarea de template-uri. Echilibrul perfect între pasiv și accesibil.</p>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div class="flex flex-col justify-center items-center">
+                    <div class="chart-container">
+                        <canvas id="chartRadar"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-sm text-gray-500">Analiză multi-factorială</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: DIGITAL PRODUCTS (ETSY) -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-indigo-900 mb-4">Universul Produselor Digitale</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Modelul "Create Once, Sell Forever" este cel mai puternic motor de venit pasiv. Iată ce se vinde cel mai bine în 2025 și cum funcționează procesul.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Donut Chart -->
+                <div class="flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-6">Ce tipuri de produse se caută?</h3>
+                    <div class="chart-container">
+                        <canvas id="chartProducts"></canvas>
+                    </div>
+                </div>
+
+                <!-- Explained List -->
+                <div class="flex flex-col justify-center space-y-4">
+                    <div class="bg-cyan-50 p-4 rounded-lg border-l-4 border-cyan-500">
+                        <strong class="block text-cyan-800 text-lg">Template-uri & Organizare</strong>
+                        <p class="text-gray-700">Excel-uri financiare, Plannere Notion, CV-uri. Oamenii plătesc pentru a economisi timp.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                        <strong class="block text-indigo-800 text-lg">Educație (E-books)</strong>
+                        <p class="text-gray-700">Ghiduri specifice ("Cum să dormi mai bine", "Rețete vegane"). Informație curată și rapidă.</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-500">
+                        <strong class="block text-amber-800 text-lg">Artă Digitală</strong>
+                        <p class="text-gray-700">Postere pentru pereți, elemente grafice. Clientul printează singur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTML Flowchart (NO SVG) -->
+            <div class="bg-gray-800 text-white rounded-xl p-8 shadow-2xl">
+                <h3 class="text-center text-2xl font-bold mb-8 text-cyan-400">Fluxul de Lucru: De la Idee la Bani</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                    <!-- Step 1 -->
+                    <div class="flow-step flow-arrow p-4 bg-gray-700 rounded-lg transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-4xl mb-2">💡</div>
+                        <h4 class="font-bold text-lg">1. Creație</h4>
+                        <p class="text-xs text-gray-300">Creezi PDF-ul sau Template-ul o singură dată (Canva/Excel).</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flow-step flow-arrow p-4 bg-gray-700 rounded-lg transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-4xl mb-2">📂</div>
+                        <h4 class="font-bold text-lg">2. Listare</h4>
+                        <p class="text-xs text-gray-300">Încarci fișierul pe Etsy/Gumroad cu titlu și poze atractive.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flow-step flow-arrow p-4 bg-gray-700 rounded-lg transform hover:-translate-y-1 transition duration-300">
+                        <div class="text-4xl mb-2">🤖</div>
+                        <h4 class="font-bold text-lg">3. Automatizare</h4>
+                        <p class="text-xs text-gray-300">Platforma livrează fișierul automat clientului după plată.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flow-step p-4 bg-gradient-to-br from-indigo-600 to-cyan-600 rounded-lg transform hover:-translate-y-1 transition duration-300 shadow-glow">
+                        <div class="text-4xl mb-2">💰</div>
+                        <h4 class="font-bold text-lg">4. Profit</h4>
+                        <p class="text-xs text-white">Încasezi banii. Repetă procesul pentru alte produse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TRAJECTORY -->
+        <section class="bg-gradient-to-r from-gray-50 to-indigo-50 rounded-2xl p-8 border border-gray-200">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold text-indigo-900 mb-4">Proiecție de Creștere</h2>
+                    <p class="text-gray-600 mb-6">
+                        Nu te aștepta la îmbogățire peste noapte. Acesta este un grafic realist al veniturilor pentru un soloprenor consistent care lansează un produs nou în fiecare lună.
+                    </p>
+                    <div class="bg-white p-4 rounded shadow">
+                        <h4 class="font-bold text-gray-800">Cheia Succesului:</h4>
+                        <p class="text-indigo-600 font-semibold text-lg">Consistența > Intensitatea</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <div class="chart-container w-full">
+                        <canvas id="chartGrowth"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Footer -->
+        <footer class="text-center py-12 border-t border-gray-200 mt-12">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Ești gata să începi cercetarea?</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Aceste date sunt doar vârful aisbergului. Abonează-te la <strong>Proiectul Arbitraj</strong> pe Substack pentru ghiduri pas cu pas.
+            </p>
+            <!-- LINK ADAUGAT AICI -->
+            <a href="https://www.paypal.com/paypalme/stefanodangellollc" target="_blank" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-indigo-700 transition cursor-pointer hover:no-underline">
+                ☕ Susține Proiectul (Donations)
+            </a>
+            <p class="mt-8 text-xs text-gray-400">
+                © 2025 Proiectul Arbitraj. Acest infografic nu constituie sfat financiar, ci material educațional.
+                <br>
+                <!-- Explicit Confirmation of NO SVG/Mermaid -->
+                No SVGs or Mermaid JS were used in the creation of this visual.
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- UTILITY: Label Wrapper for Chart.js (Strict 16 char limit) ---
+        function wrapLabels(labels) {
+            return labels.map(label => {
+                if (label.length <= 16) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + " " + words[i]).length <= 16) {
+                        currentLine += " " + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            });
+        }
+
+        // --- GLOBAL CHART DEFAULTS ---
+        Chart.defaults.font.family = "'Segoe UI', 'Helvetica', 'Arial', sans-serif";
+        Chart.defaults.color = '#4B5563';
+        Chart.defaults.responsive = true;
+        Chart.defaults.maintainAspectRatio = false; // Crucial for container fitting
+        
+        // Common Tooltip Configuration required by prompt
+        const commonTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- CHART 1: Comparison (Bar) ---
+        const ctxComparison = document.getElementById('chartComparison').getContext('2d');
+        new Chart(ctxComparison, {
+            type: 'bar',
+            data: {
+                // Pre-wrapped labels
+                labels: wrapLabels(['Costuri de Start', 'Costuri Mentenanță', 'Risc Financiar', 'Acces Piață (Reach)']),
+                datasets: [
+                    {
+                        label: 'Afacere Tradițională',
+                        data: [9, 8, 9, 3], // High cost, high risk, low reach
+                        backgroundColor: '#9CA3AF', // Gray
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Digital Arbitrage',
+                        data: [2, 1, 2, 10], // Low cost, low risk, high reach
+                        backgroundColor: '#4F46E5', // Indigo
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: commonTooltipConfig,
+                    title: { display: true, text: 'Tradițional vs. Digital (Scor Eficiență)' }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 10 }
+                }
+            }
+        });
+
+        // --- CHART 2: Analysis (Radar) ---
+        const ctxRadar = document.getElementById('chartRadar').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: wrapLabels(['Venit Potențial', 'Competență Tehnică', 'Natură Pasivă', 'Viteză Start']),
+                datasets: [
+                    {
+                        label: 'AI Agency',
+                        data: [9, 8, 6, 7],
+                        borderColor: '#4F46E5', // Indigo
+                        backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    },
+                    {
+                        label: 'Etsy Digital',
+                        data: [7, 4, 9, 8],
+                        borderColor: '#06B6D4', // Cyan
+                        backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                    },
+                    {
+                        label: 'Remote Closing',
+                        data: [8, 3, 2, 9], // High income, low passive
+                        borderColor: '#F59E0B', // Amber
+                        backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: commonTooltipConfig
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: '#E5E7EB' },
+                        grid: { color: '#E5E7EB' },
+                        pointLabels: { font: { size: 12 } },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+
+        // --- CHART 3: Products (Doughnut) ---
+        const ctxProducts = document.getElementById('chartProducts').getContext('2d');
+        new Chart(ctxProducts, {
+            type: 'doughnut',
+            data: {
+                labels: wrapLabels(['Template-uri & Organizare', 'E-books & Ghiduri', 'Artă Digitală / Print', 'Cursuri Video']),
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: [
+                        '#06B6D4', // Cyan
+                        '#4F46E5', // Indigo
+                        '#F59E0B', // Amber
+                        '#10B981'  // Emerald
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'right' },
+                    tooltip: commonTooltipConfig,
+                    title: { display: false }
+                },
+                cutout: '60%'
+            }
+        });
+
+        // --- CHART 4: Growth (Line) ---
+        const ctxGrowth = document.getElementById('chartGrowth').getContext('2d');
+        new Chart(ctxGrowth, {
+            type: 'line',
+            data: {
+                labels: ['Luna 1', 'Luna 2', 'Luna 3', 'Luna 4', 'Luna 5', 'Luna 6', 'Luna 9', 'Luna 12'],
+                datasets: [{
+                    label: 'Venit Lunar Estimat ($)',
+                    data: [0, 150, 400, 850, 1500, 2200, 4500, 8000],
+                    borderColor: '#10B981', // Emerald (Money)
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    tooltip: commonTooltipConfig,
+                    title: { display: true, text: 'Curba de Creștere Exponențială' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) { return '$' + value; }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+    <!-- 
+        PALETTE USED: Vibrant Future
+        Primary: #4F46E5
+        Secondary: #06B6D4
+        Accent: #F59E0B
+        Background: #F3F4F6
+    -->
+</body>
+</html>
