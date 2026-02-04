@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proiectul Arbitraj: Harta Independenței Financiare 2025</title>
+    <!-- Performance: Preconnect to CDNs to reduce connection latency -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js moved to body end to prevent render blocking -->
     <style>
         /* Palette: Vibrant Future (Indigo/Cyan/Amber) */
         :root {
@@ -113,7 +117,7 @@
                     </div>
                     <p class="text-sm text-gray-500 text-center mt-2 italic">Scoruri relative (1-10) bazate pe analiză de piață.</p>
                 </div>
-                
+
                 <!-- Text Col -->
                 <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-indigo-500">
                     <h3 class="text-2xl font-bold mb-4 text-gray-800">De ce Digital Arbitrage?</h3>
@@ -147,7 +151,7 @@
         <!-- SECTION 2: TOP 5 METHODS ANALYSIS -->
         <section class="bg-white rounded-2xl shadow-xl p-8 md:p-12 overflow-hidden relative">
             <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-100 rounded-full opacity-50 -mr-20 -mt-20"></div>
-            
+
             <div class="text-center mb-12 relative z-10">
                 <h2 class="text-3xl font-bold text-indigo-900 mb-4">Top 5 Metode Analizate</h2>
                 <p class="text-lg text-gray-600 max-w-4xl mx-auto">
@@ -231,7 +235,7 @@
             <!-- HTML Flowchart (NO SVG) -->
             <div class="bg-gray-800 text-white rounded-xl p-8 shadow-2xl">
                 <h3 class="text-center text-2xl font-bold mb-8 text-cyan-400">Fluxul de Lucru: De la Idee la Bani</h3>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                     <!-- Step 1 -->
                     <div class="flow-step flow-arrow p-4 bg-gray-700 rounded-lg transform hover:-translate-y-1 transition duration-300">
@@ -302,6 +306,9 @@
 
     </main>
 
+    <!-- Performance: Chart.js script loaded at the end of body to improve display speed -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         // --- UTILITY: Label Wrapper for Chart.js (Strict 16 char limit) ---
         function wrapLabels(labels) {
@@ -329,7 +336,7 @@
         Chart.defaults.color = '#4B5563';
         Chart.defaults.responsive = true;
         Chart.defaults.maintainAspectRatio = false; // Crucial for container fitting
-        
+
         // Common Tooltip Configuration required by prompt
         const commonTooltipConfig = {
             callbacks: {
@@ -483,7 +490,7 @@
         });
 
     </script>
-    <!-- 
+    <!--
         PALETTE USED: Vibrant Future
         Primary: #4F46E5
         Secondary: #06B6D4
